@@ -41,4 +41,6 @@ class LoginController extends Controller
     public function getUser() {
         return User::All();
     }
+
 }
+
