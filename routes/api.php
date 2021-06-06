@@ -19,6 +19,8 @@ Route::middleware('api')->get('/movies', [MovieController::class, 'index']);
 
 Route::middleware('api')->get('/movies/{id}', [MovieController::class, 'show']);
 
+Route::middleware('api')->post('/movies', [MovieController::class, 'store']);
+
 Route::middleware('api')->delete('/movies/{id}', [MovieController::class, 'destroy']);
 
 
