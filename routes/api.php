@@ -18,3 +18,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('api')->get('/movies', [MovieController::class, 'index']);
 
 Route::middleware('api')->get('/movies/{id}', [MovieController::class, 'show']);
+
+Route::middleware('api')->delete('/movies/{id}', [MovieController::class, 'destroy']);
+
+
