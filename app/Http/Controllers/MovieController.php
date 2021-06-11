@@ -1,15 +1,21 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Movie;
 use App\Http\Requests\MovieRequest;
 use Illuminate\Http\Request;
+use  App\Http\Services\MovieService;
 
 class MovieController extends Controller
 {
-    public function index(){
+    public function __construct(MovieService $movieService){
+        $this->movieService = $movieService;
+    }
 
-        return Movie::all();
+    public function index(Request $request){
+
+        return  $this->movieService->search($request);
     }
 
     public function show($id){
@@ -18,7 +24,14 @@ class MovieController extends Controller
     }
 
     public function store(MovieRequest $request){
-        return Movie::create($request->all());
+        $data = $request->validated();
+
+        return Movie::create($data);
+    }
+
+    public function update(Request $request, $id)
+    {
+        return Movie::find($id)->update($request->all());
     }
 
     public function destroy($id){
