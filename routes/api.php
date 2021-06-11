@@ -29,6 +29,8 @@ Route::middleware('api')->delete('/movies/{id}', [MovieController::class, 'destr
 
 Route::post('/login', [LoginController::class, 'authenticate']);
 
+Route::post('/register',[LoginController::class,'register']);
+
 Route::middleware('jwt')->get('/getUser', [LoginController::class, 'getUser']);
 
 
